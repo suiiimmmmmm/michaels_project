@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <style>
+            .embedDiv {
+                width: 410px;
+                height: 460px;
+                animation: movement 3s ease-in-out infinite alternate;
+            }
+            @keyframes movement {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(calc(100vw - 410px))
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>hi</h1>
+        <p>
+            this is my website
+        </p>
+        <div class="embedDiv">
+            <iframe width="410" height="460"
+   src="https://academy.cs.cmu.edu/sharing/azureCrocodile522173/embed"> 
+ </iframe>
+        </div>
+        
+    </body>
+</html>
