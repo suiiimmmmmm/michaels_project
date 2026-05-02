@@ -1,30 +1,64 @@
 <html>
     <head>
+        <script>
+            function centerElement() {
+            const parent = document.getElementById('myBox');
+            const target = document.getElementById('game');
+    
+    
+            parent.style.display = 'flex';
+            parent.style.justifyContent = 'center'; 
+            parent.style.alignItems = 'center';     
+        }
+
+        </script>
         <style>
+            .fuckYouButton {
+              display: flex;
+              justify-content: center;
+              align-items: center; 
+              transform: translateX(calc(50vw - 52px));
+              width: 100px;
+            }
             .embedDiv {
                 width: 410px;
                 height: 460px;
                 animation: movement 3s ease-in-out infinite alternate;
             }
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+            @keyframes movement2 {
+                0% {
+                    transfrom: translateY(0);
+                }
+                100% {
+                    transform: translateY(calc(100vh - 560px))
+                }
+            }
             @keyframes movement {
                 0% {
                     transform: translateX(0);
-                    transform: translateY(0);
                 }
                 100% {
-                    transform: translateX(calc(100vw - 410px));
-                    transform: translateY(calc(100vh - 460px));
+                    transform: translateX(calc(100vw - 410px))
                 }
             }
         </style>
     </head>
     <body>
         <h1 style="display: flex; justify-content: center;">My name is MICHAEL!!!!!</h1>
+        <button class="fuckYouButton" onclick="document.getElementById('myBox').classList.toggle('embedDiv'); centerElement();">stop</button>
         <p style="display: flex; justify-content: center;">
             this is my goon website
         </p>
-        <div class="embedDiv">
-            <iframe width="410" height="460"
+        <div id="myBox" class="embedDiv">
+            <iframe id="game" width="410" height="460"
    src="https://academy.cs.cmu.edu/sharing/azureCrocodile522173/embed"> 
  </iframe>
         </div>
