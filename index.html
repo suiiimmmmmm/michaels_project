@@ -111,16 +111,13 @@ const firebaseConfig = {
   appId: "1:826115238:web:39e7f1b869d6904b50a067",
   measurementId: "G-KS9C4J23MV"
 };
-  const app = initializeApp(firebaseConfig);
+     const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const db = getFirestore(app);
-
-  // This function handles the rating
-  window.submitRating = async (ratingValue) => {
+async function handleRating(ratingValue) {
     const name = document.getElementById('raterName').value;
     if (!name) return alert("Please enter your name!");
 
-    // Automatically identifies the page (e.g., "about" or "contact")
     const pageId = window.location.pathname.split("/").pop().replace(".html", "") || "home";
 
     try {
@@ -133,12 +130,20 @@ const firebaseConfig = {
         timestamp: serverTimestamp()
       }, { merge: true });
 
-      alert("Thanks for rating " + pageId + "!");
+      alert(`Rated ${ratingValue} stars!`);
     } catch (e) {
       console.error(e);
       alert("Error saving rating.");
     }
-  };
+  }
+
+  // ATTACH LISTENERS: This replaces the "onclick" in HTML
+  for (let i = 1; i <= 5; i++) {
+    const btn = document.getElementById(`btn-${i}`);
+    if (btn) {
+      btn.addEventListener('click', () => handleRating(i));
+    }
+  }
 </script>
 
 <!-- Simple UI Example -->
