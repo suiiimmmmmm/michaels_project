@@ -95,5 +95,58 @@ data-ad-slot="1234567890"></ins>
             Meera Shelton gives this website a
         </p>
 <h1 style="display: flex; justify-content: center;">MICHAEL/10!!!!!!</h1>
+        
+ <script type="module">
+  import { initializeApp } from "https://gstatic.com";
+  import { getAuth, signInAnonymously } from "https://gstatic.com";
+  import { getFirestore, doc, setDoc, serverTimestamp } from "https://gstatic.com";
+
+  
+const firebaseConfig = {
+  apiKey: "AIzaSyDW3JPTHhSF76IvPlx8E55FQ29R5h_9_2w",
+  authDomain: "michael-a48ce.firebaseapp.com",
+  projectId: "michael-a48ce",
+  storageBucket: "michael-a48ce.firebasestorage.app",
+  messagingSenderId: "826115238",
+  appId: "1:826115238:web:39e7f1b869d6904b50a067",
+  measurementId: "G-KS9C4J23MV"
+};
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // This function handles the rating
+  window.submitRating = async (ratingValue) => {
+    const name = document.getElementById('raterName').value;
+    if (!name) return alert("Please enter your name!");
+
+    // Automatically identifies the page (e.g., "about" or "contact")
+    const pageId = window.location.pathname.split("/").pop().replace(".html", "") || "home";
+
+    try {
+      const { user } = await signInAnonymously(auth);
+      const ratingRef = doc(db, 'content', pageId, 'ratings', user.uid);
+
+      await setDoc(ratingRef, {
+        displayName: name,
+        rating: ratingValue,
+        timestamp: serverTimestamp()
+      }, { merge: true });
+
+      alert("Thanks for rating " + pageId + "!");
+    } catch (e) {
+      console.error(e);
+      alert("Error saving rating.");
+    }
+  };
+</script>
+
+<!-- Simple UI Example -->
+<div>
+  <input type="text" id="raterName" placeholder="Your Name">
+  <button onclick="submitRating(5)">⭐ 5</button>
+  <button onclick="submitRating(4)">⭐ 4</button>
+  <button onclick="submitRating(3)">⭐ 3</button>
+</div>
     </body>
 </html>
