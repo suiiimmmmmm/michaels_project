@@ -14,6 +14,22 @@
 
         </script>
         <style>
+            @keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotatingfuckingpieceoftextfuckyou {
+  width: 100px;
+  height: 100px;
+  background-color: #3498db;
+  animation: spin 4s linear infinite;
+}
+
             .stream {
                 display: flex;
                 justify-content: center;
@@ -59,6 +75,7 @@
     <body>
         <h1 style="display: flex; justify-content: center;">My name is MICHAEL!!!!!</h1>
         <button class="fuckYouButton" onclick="document.getElementById('myBox').classList.toggle('embedDiv'); centerElement();">stop</button>
+        <p class="rotatingfuckingpieceoftextfuckyou" style="display: flex; justify-content: center;">If i were you i wouldn't inspect element</p>
 
         <p style="display: flex; justify-content: center;">
             this is my goon website
